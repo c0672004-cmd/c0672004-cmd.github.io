@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuanyuan Wei (Coco) | Data Analyst Portfolio</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root { --primary: #3182ce; --text: #1a202c; --light-text: #718096; --bg: #ffffff; --card-bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); background-color: var(--bg); margin: 0; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        header { text-align: center; padding: 80px 0 40px; border-bottom: 1px solid #e2e8f0; }
+        h1 { font-size: 2.8rem; margin: 0; color: var(--text); }
+        .subtitle { font-size: 1.2rem; color: var(--primary); font-weight: 600; margin: 10px 0; }
+        .location { color: var(--light-text); font-size: 1rem; }
+        .nav-links { margin-top: 20px; }
+        .nav-links a { margin: 0 15px; text-decoration: none; color: var(--primary); font-weight: 600; }
+        
+        /* Section Styling */
+        section { padding: 60px 0; }
+        .section-title { font-size: 1.8rem; border-left: 5px solid var(--primary); padding-left: 15px; margin-bottom: 30px; }
+        
+        /* Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center; }
+        .skill-item { background: var(--card-bg); padding: 15px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; border: 1px solid #e2e8f0; }
+
+        /* Project Card Styling */
+        .case-study { background: var(--bg); border: 1px solid #e2e8f0; border-radius: 15px; overflow: hidden; margin-bottom: 50px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .case-study-content { padding: 30px; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
+        .kpi-card { background: #f1f5f9; padding: 15px; border-radius: 10px; text-align: center; }
+        .kpi-value { display: block; font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+        .kpi-label { font-size: 0.8rem; color: var(--light-text); text-transform: uppercase; }
+        .dashboard-img { width: 100%; border-bottom: 1px solid #e2e8f0; }
+        
+        /* Small Project Cards */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .small-card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .small-card h4 { margin-top: 0; color: var(--primary); }
+        .btn { display: inline-block; margin-top: 15px; padding: 8px 16px; background: var(--primary); color: white; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600; }
+        
+        @media (max-width: 768px) { h1 { font-size: 2rem; } .case-study-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Yuanyuan Wei (Coco)</h1>
+        <p class="subtitle">Maths & Stats Graduate | Data Analyst</p>
+        <p class="location">📍 Montreal, QC • <b>Résident Permanent Canadien</b> • Bilingual (EN/FR)</p>
+        <div class="nav-links">
+            <a href="mailto:c0672004@gmail.com">Email</a>
+            <a href="YOUR_LINKED_IN_URL">LinkedIn</a>
+            <a href="https://github.com">GitHub</a>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section>
+        <div class="skills-grid">
+            <div class="skill-item">Python (Pandas)</div>
+            <div class="skill-item">SQL (MySQL)</div>
+            <div class="skill-item">R (Tidyverse)</div>
+            <div class="skill-item">Excel (Pivot/VBA)</div>
+            <div class="skill-item">Tableau / Power BI</div>
+            <div class="skill-item">Stats Modeling</div>
+        </div>
+    </section>
+
+    <!-- Featured Project: Vrindavan Retail -->
+    <section>
+        <h2 class="section-title">Featured: Retail Performance Dashboard</h2>
+        <div class="case-study">
+            <img src="Dashboard_Screenshot.png" alt="Retail Dashboard" class="dashboard-img">
+            <div class="case-study-content">
+                <h3>Vrindavan Store Analysis (2022)</h3>
+                <p><i>Optimisation des revenus d'un commerce de détail à travers le nettoyage de données et la visualisation décisionnelle.</i></p>
+                
+                <div class="kpi-grid">
+                    <div class="kpi-card"><span class="kpi-value">$21.4M</span><span class="kpi-label">Total Revenue</span></div>
+                    <div class="kpi-card"><span class="kpi-value">$690.29</span><span class="kpi-label">AOV</span></div>
+                    <div class="kpi-card"><span class="kpi-value">92.25%</span><span class="kpi-label">Delivery Rate</span></div>
+                    <div class="kpi-card"><span class="kpi-value">64.2%</span><span class="kpi-label">Women Share</span></div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;">
+                    <div>
+                        <h4 style="color: #e53e3e;">🛍️ The Challenge</h4>
+                        <p style="font-size: 0.95rem;">Managing 31,000+ messy transactions with inconsistent labels and string-based quantity errors that prevented accurate financial reporting.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #38a169;">💡 The Solution</h4>
+                        <p style="font-size: 0.95rem;">Engineered a data pipeline to normalize categories and built an interactive dashboard identifying March as the peak month and women as primary revenue drivers.</p>
+                    </div>
+                </div>
+                <a href="https://github.com/Retail-Sales-Analysis-2022" class="btn">View Technical Repo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Research Section -->
+    <section>
+        <h2 class="section-title">Technical Modeling & Research</h2>
+        <div class="project-grid">
+            
+            <!-- Olympic Project -->
+            <div class="small-card">
+                <h4>🏅 Olympic Success Study</h4>
+                <p>Multivariate regression in R exploring the correlation between GDP (r=0.769) and athletic success. Features VIF testing and ANOVA.</p>
+                <p style="font-size: 0.8rem; color: var(--light-text);">Tools: R, Tidyverse, Hypothesis Testing</p>
+                <a href="https://github.com/olympic-stats-analysis" class="btn">View Repo</a>
+            </div>
+
+            <!-- Wine Quality -->
+            <div class="small-card">
+                <h4>🍷 Wine Quality Prediction</h4>
+                <p>Developed a gradient descent optimizer "from scratch" in Python. Achieved R²=0.428 using polynomial modeling.</p>
+                <p style="font-size: 0.8rem; color: var(--light-text);">Tools: Python, NumPy, Matplotlib</p>
+                <a href="#" class="btn">View Repo</a>
+            </div>
+
+            <!-- MNIST -->
+            <div class="small-card">
+                <h4>🤖 MNIST Digits Classification</h4>
+                <p>Deep Learning study achieving 99.17% accuracy using a modified LeNet-5 CNN architecture in PyTorch.</p>
+                <p style="font-size: 0.8rem; color: var(--light-text);">Tools: Python, PyTorch, Scikit-learn</p>
+                <a href="#" class="btn">View Repo</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education & Footer -->
+    <section style="text-align: center; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+        <h2 class="section-title" style="border: none;">Education</h2>
+        <p><b>Bachelor of Science in Mathematics and Statistics</b><br>University of Sheffield</p>
+        <p style="font-size: 0.8rem; color: var(--light-text); margin-top: 50px;">© 2026 | Built with HTML/CSS by Yuanyuan Wei</p>
+    </section>
+</div>
+
+</body>
+</html>
