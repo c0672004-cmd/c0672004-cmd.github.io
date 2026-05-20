@@ -113,8 +113,8 @@
     <header>
         <div class="container">
             <div class="hero-badge">📊</div>
-            <h1>Your Name</h1>
-            <p class="lang-en">Junior Data Analyst based in Montreal</p>
+            <h1>Yuanyuan Wei (Coco)</h1>
+            <p class="lang-en">Aspiring Junior Data Analyst based in Montreal</p>
             <p class="lang-fr">Analyste de données junior basé à Montréal</p>
         </div>
     </header>
@@ -125,10 +125,10 @@
         
         <div class="grid">
             <!-- Project 1 Card -->
-            <div class="card scroll-reveal" onclick="openModal('bixi')">
-                <span class="tag" style="background:#dbeafe; color:#1e40af;">Python</span>
+            <div class="card scroll-reveal" onclick="openModal('campaign')">
+                <span class="tag" style="background:#dbeafe; color:#1e40af;">Excel</span>
                 <div class="lang-en">
-                    <h3>Montreal BIXI Data Exploration</h3>
+                    <h3>Campaign</h3>
                     <p>Click to see full technical architecture and results...</p>
                 </div>
                 <div class="lang-fr">
@@ -138,10 +138,10 @@
             </div>
 
             <!-- Project 2 Card -->
-            <div class="card scroll-reveal" onclick="openModal('sales')">
-                <span class="tag" style="background:#fef3c7; color:#92400e;">SQL & Power BI</span>
+            <div class="card scroll-reveal" onclick="openModal('retail')">
+                <span class="tag" style="background:#fef3c7; color:#92400e;">Excel</span>
                 <div class="lang-en">
-                    <h3>E-Commerce Sales Optimization</h3>
+                    <h3>Retail</h3>
                     <p>Click to see full technical architecture and results...</p>
                 </div>
                 <div class="lang-fr">
@@ -185,18 +185,18 @@
 
         // 3. Dynamic Popup System Database
         const projectData = {
-            bixi: {
-                en: `<h3>Montreal BIXI Analysis</h3>
+            campaign: {
+                en: `<h3>Campaign</h3>
                      <p><b>Business Problem:</b> Station shortages during morning rush hour.</p>
                      <p><b>Methodology:</b> I wrote a Python script utilizing Pandas to clean dataset schemas and built a forecasting pipeline.</p>
                      <a href="#" class="btn-link">Open GitHub Repository</a>`,
-                fr: `<h3>Analyse BIXI Montréal</h3>
+                fr: `<h3>Campaign</h3>
                      <p><b>Problème:</b> Pénuries de vélos aux stations pendant l'heure de pointe.</p>
                      <p><b>Méthodologie:</b> Script Python avec Pandas pour nettoyer les schémas de données et modéliser la demande future.</p>
                      <a href="#" class="btn-link">Ouvrir le code GitHub</a>`
             },
-            sales: {
-                en: `<h3>Sales Optimization</h3>
+            retail: {
+                en: `<h3>Retail</h3>
                      <p><b>Business Problem:</b> Shopping cart abandonment detection.</p>
                      <p><b>Methodology:</b> Constructed deep relational SQL subqueries to track checkout drops, feeding data metrics straight into Power BI dashboards.</p>
                      <a href="#" class="btn-link">View Power BI Interactive File</a>`,
