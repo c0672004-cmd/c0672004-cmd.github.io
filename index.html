@@ -3,134 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analyst Portfolio</title>
+    <title>Dynamic Data Portfolio | Portfolio Dynamique</title>
     <style>
-        /* --- CHANGE YOUR SITE COLORS HERE --- */
         :root {
-            --primary-dark: #1e293b;   /* Slate block color */
-            --accent-blue: #3b82f6;    /* Button & link blue */
-            --bg-light: #f8fafc;       /* Main page background */
-            --card-bg: #ffffff;        /* Project block background */
-            --text-dark: #0f172a;      /* Bold text color */
-            --text-muted: #475569;    /* Subtitles color */
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #334155;
         }
 
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-light); margin: 0; padding: 0; color: var(--text-dark); }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            margin: 0; 
+            padding: 0; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1050px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- LANGUAGE TOGGLE --- */
+        .lang-box { position: fixed; top: 20px; right: 20px; z-index: 100; background: white; padding: 4px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .lang-btn { border: none; padding: 6px 12px; font-weight: bold; cursor: pointer; border-radius: 6px; transition: 0.2s; }
+        .active-lang { background: var(--accent); color: white; }
+
+        /* --- HERO BLOCK (PULSING LOGO ANIMATION) --- */
+        header { background: var(--primary); color: white; padding: 100px 0; text-align: center; }
+        .hero-badge { animation: pulse 2s infinite; font-size: 3rem; margin-bottom: 10px; display: inline-block; }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- SCROLL ANIMATION EFFECTS --- */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .scroll-reveal.reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- PROJECT GRID & DYNAMIC HOVER --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px 0; }
+        .card { 
+            background: var(--card-bg); 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        /* Continuous hovering movement */
+        .card:hover { 
+            transform: translateY(-10px) scale(1.02); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        .tag { display: inline-block; font-size: 0.75rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; margin-bottom: 15px; background: #e2e8f0;}
+
+        /* --- POPUP MODAL (THE "POMPING" SCREEN) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-box {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.7) translateY(50px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Gives the bouncy spring effect */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        /* Active popup states triggered by JS */
+        .modal-overlay.pop-active { opacity: 1; pointer-events: auto; }
+        .modal-overlay.pop-active .modal-box { transform: scale(1) translateY(0); }
         
-        /* Language Toggle Floating Block */
-        .lang-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; background: white; padding: 5px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        .lang-btn { border: none; padding: 6px 12px; font-weight: bold; cursor: pointer; border-radius: 5px; }
-        .active-lang { background-color: var(--accent-blue); color: white; }
-
-        /* Dark Header Block */
-        .hero-block { background-color: var(--primary-dark); color: white; padding: 80px 0; text-align: center; }
-        .hero-title { font-size: 2.5rem; margin-bottom: 10px; }
-        .hero-subtitle { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 30px; }
-        .btn { background-color: var(--accent-blue); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; }
-
-        /* Skills Dashboard Blocks */
-        .skills-section { padding: 40px 0; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; }
-        .skills-grid { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .skill-badge { background: white; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 20px; font-weight: 6px; font-size: 0.9rem; }
-
-        /* Project Grid & Cards */
-        .projects-section { padding: 60px 0; }
-        .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-card { background: var(--card-bg); border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 25px; transition: transform 0.2s; }
-        .project-card:hover { transform: translateY(-5px); }
-        .project-title { font-size: 1.4rem; color: var(--accent-blue); margin-top: 0; }
-        
-        /* Footer Block */
-        footer { background: var(--primary-dark); color: #94a3b8; text-align: center; padding: 30px 0; font-size: 0.9rem; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; border: none; background: none; }
+        .btn-link { display: inline-block; background: var(--accent); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 20px; }
     </style>
-    <script>
-        function toggleLanguage(lang) {
-            document.querySelectorAll('.lang-en').forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
-            document.querySelectorAll('.lang-fr').forEach(e => e.style.display = lang === 'fr' ? 'block' : 'none');
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active-lang'));
-            document.getElementById('btn-' + lang).classList.add('active-lang');
-        }
-    </script>
 </head>
-<body onload="toggleLanguage('en')">
+<body>
 
     <!-- Language Controls -->
-    <div class="lang-toggle">
-        <button id="btn-en" onclick="toggleLanguage('en')" class="lang-btn active-lang">EN</button>
-        <button id="btn-fr" onclick="toggleLanguage('fr')" class="lang-btn">FR</button>
+    <div class="lang-box">
+        <button id="b-en" onclick="setLang('en')" class="lang-btn active-lang">EN</button>
+        <button id="b-fr" onclick="setLang('fr')" class="lang-btn">FR</button>
     </div>
 
-    <!-- Header Block -->
-    <header class="hero-block">
+    <!-- Header Section -->
+    <header>
         <div class="container">
-            <h1 class="hero-title">Coco (Yuanyuan Wei)</h1>
-            <p class="lang-en hero-subtitle">Aspiring Junior Data Analyst | Montreal, QC</p>
-            <p class="lang-fr hero-subtitle">Analyste de données junior | Montréal, QC</p>
-            <a href="#projects" class="btn">
-                <span class="lang-en">Explore My Work</span>
-                <span class="lang-fr">Découvrir mes projets</span>
-            </a>
+            <div class="hero-badge">📊</div>
+            <h1>Your Name</h1>
+            <p class="lang-en">Junior Data Analyst based in Montreal</p>
+            <p class="lang-fr">Analyste de données junior basé à Montréal</p>
         </div>
     </header>
 
-    <!-- Core Toolbox Block -->
-    <section class="skills-section">
-        <div class="container">
-            <div class="skills-grid">
-                <div class="skill-badge">📊 SQL (MySQL / PostgreSQL)</div>
-                <div class="skill-badge">🐍 Python (Numpy / Pandas / Matplotlib/ Seaborn)</div>
-                <div class="skill-badge">📈 Power BI / Tableau</div>
-                <div class="skill-badge"> R (R / R Studio)</div>
-                <div class="skill-badge">🗃️ Excel / Google Sheets</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Content Projects Block -->
-    <main id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="lang-en">Data Projects</span>
-                <span class="lang-fr">Projets de données</span>
-            </h2>
-            
-            <div class="project-grid">
-                <!-- Project 1 Block -->
-                <div class="project-card">
-                    <div class="lang-en">
-                        <h3 class="project-title">Campaign Project Dashboard (Excel)</h3>
-                        <p style="color: var(--text-muted);">Analyzed over 500,000 bike share trips to forecast peak station demand using Python.</p>
-                    </div>
-                    <div class="lang-fr">
-                        <h3 class="project-title">Exploration des données BIXI Montréal</h3>
-                        <p style="color: var(--text-muted);">Analyse de plus de 500 000 trajets de vélopartage pour prévoir la demande maximale aux stations avec Python.</p>
-                    </div>
-                    <a href="#" style="color: var(--accent-blue); font-weight: bold; text-decoration: none;">GitHub Code →</a>
+    <!-- Main Grid Section -->
+    <div class="container" style="padding: 60px 0;">
+        <h2 style="text-align: center;">Projects</h2>
+        
+        <div class="grid">
+            <!-- Project 1 Card -->
+            <div class="card scroll-reveal" onclick="openModal('bixi')">
+                <span class="tag" style="background:#dbeafe; color:#1e40af;">Python</span>
+                <div class="lang-en">
+                    <h3>Montreal BIXI Data Exploration</h3>
+                    <p>Click to see full technical architecture and results...</p>
                 </div>
+                <div class="lang-fr">
+                    <h3>Exploration BIXI Montréal</h3>
+                    <p>Cliquez pour voir l'architecture technique complète...</p>
+                </div>
+            </div>
 
-                <!-- Project 2 Block -->
-                <div class="project-card">
-                    <div class="lang-en">
-                        <h3 class="project-title">Retail Project Dashboard (Excel)</h3>
-                        <p style="color: var(--text-muted);">Cleaned dirty transactional data in SQL and built an interactive executive view in Power BI.</p>
-                    </div>
-                    <div class="lang-fr">
-                        <h3 class="project-title">Tableau de bord des ventes</h3>
-                        <p style="color: var(--text-muted);">Nettoyage de données transactionnelles brutes en SQL et création d'un tableau de bord interactif dans Power BI.</p>
-                    </div>
-                    <a href="#" style="color: var(--accent-blue); font-weight: bold; text-decoration: none;">GitHub Code →</a>
+            <!-- Project 2 Card -->
+            <div class="card scroll-reveal" onclick="openModal('sales')">
+                <span class="tag" style="background:#fef3c7; color:#92400e;">SQL & Power BI</span>
+                <div class="lang-en">
+                    <h3>E-Commerce Sales Optimization</h3>
+                    <p>Click to see full technical architecture and results...</p>
+                </div>
+                <div class="lang-fr">
+                    <h3>Optimisation E-Commerce</h3>
+                    <p>Cliquez pour voir l'architecture technique complète...</p>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <!-- Footer Block -->
-    <footer>
-        <p>© 2026 | Built with HTML & CSS | Montreal, QC</p>
-    </footer>
+    <!-- The Central Popup Window (Hidden by Default) -->
+    <div id="projectModal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="modalContent">
+                <!-- JavaScript changes this block dynamically -->
+            </div>
+        </div>
+    </div>
 
+    <script>
+        // 1. Language Toggle Logic
+        function setLang(lang) {
+            document.querySelectorAll('.lang-en').forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.lang-fr').forEach(e => e.style.display = lang === 'fr' ? 'block' : 'none');
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active-lang'));
+            document.getElementById('b-' + lang).classList.add('active-lang');
+        }
+        window.onload = () => setLang('en');
+
+        // 2. Scroll Reveal Observer (Triggers movement as you scroll down)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // 3. Dynamic Popup System Database
+        const projectData = {
+            bixi: {
+                en: `<h3>Montreal BIXI Analysis</h3>
+                     <p><b>Business Problem:</b> Station shortages during morning rush hour.</p>
+                     <p><b>Methodology:</b> I wrote a Python script utilizing Pandas to clean dataset schemas and built a forecasting pipeline.</p>
+                     <a href="#" class="btn-link">Open GitHub Repository</a>`,
+                fr: `<h3>Analyse BIXI Montréal</h3>
+                     <p><b>Problème:</b> Pénuries de vélos aux stations pendant l'heure de pointe.</p>
+                     <p><b>Méthodologie:</b> Script Python avec Pandas pour nettoyer les schémas de données et modéliser la demande future.</p>
+                     <a href="#" class="btn-link">Ouvrir le code GitHub</a>`
+            },
+            sales: {
+                en: `<h3>Sales Optimization</h3>
+                     <p><b>Business Problem:</b> Shopping cart abandonment detection.</p>
+                     <p><b>Methodology:</b> Constructed deep relational SQL subqueries to track checkout drops, feeding data metrics straight into Power BI dashboards.</p>
+                     <a href="#" class="btn-link">View Power BI Interactive File</a>`,
+                fr: `<h3>Optimisation des Ventes</h3>
+                     <p><b>Problème:</b> Détection de l'abandon du panier d'achat.</p>
+                     <p><b>Méthodologie:</b> Sous-requêtes SQL relationnelles avancées pour isoler les pertes de conversion, puis intégration dans Power BI.</p>
+                     <a href="#" class="btn-link">Voir le tableau de bord interactif</a>`
+            }
+        };
+
+        // Current UI language tracker
+        let currentLang = 'en';
+        function setLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-en').forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.lang-fr').forEach(e => e.style.display = lang === 'fr' ? 'block' : 'none');
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active-lang'));
+            document.getElementById('b-' + lang).classList.add('active-lang');
+        }
+
+        // 4. Open/Close Animations
+        function openModal(projectId) {
+            document.getElementById('modalContent').innerHTML = projectData[projectId][currentLang];
+            document.getElementById('projectModal').classList.add('pop-active');
+            document.body.style.overflow = 'hidden'; // Stop page background scrolling
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('pop-active');
+            document.body.style.overflow = 'auto'; // Re-enable background scrolling
+        }
+    </script>
 </body>
 </html>
-
