@@ -3,201 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math & Stats Graduate | Data Analyst Portfolio</title>
-    <style>
-        /* General Design */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 2rem; background-color: #f8f9fa; }
-        header { border-bottom: 3px solid #2c3e50; padding-bottom: 2rem; margin-bottom: 2rem; text-align: center; }
-        
-        /* Text Styles */
-        h1 { color: #2c3e50; margin-bottom: 0.5rem; font-size: 2.5rem; }
-        .tagline { font-size: 1.2rem; color: #555; font-weight: 500; margin-bottom: 1rem; }
-        .contact-info { font-size: 0.95rem; color: #666; }
-        
-        /* Skills Grid */
-        .section-title { border-left: 5px solid #3498db; padding-left: 15px; margin-top: 3rem; color: #2c3e50; }
-        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
-        .skill-badge { background: #3498db; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; }
-        
-        /* Project Cards */
-        .project-card { background: white; border: 1px solid #e1e4e8; padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .project-card h3 { margin-top: 0; color: #2980b9; }
-        .project-tools { font-family: monospace; color: #e67e22; font-weight: bold; }
-        
-        /* Buttons/Links */
-        .btn { display: inline-block; background: #2c3e50; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-top: 10px; font-size: 0.9rem; }
-        .btn:hover { background: #34495e; text-decoration: none; color: white; }
-        a { color: #3498db; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-    </style>
+    <title>Data Analyst Portfolio | Portfolio Analyste de Données</title>
+    <script src="https://tailwindcss.com"></script>
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.lang-fr').forEach(el => el.style.display = lang === 'fr' ? 'block' : 'none');
+        }
+    </script>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans" onload="switchLang('en')">
 
-    <header>
-        <h1>Yuanyuan Wei (Coco)</h1>
-        <div class="tagline">Maths & Stats Graduate | Data Analyst</div>
-        <div class="contact-info">
-            📍 Montreal, QC (Canada Permanent Resident) | 📧 <a href="mailto:c0672004@gmail.com">c0672004@gmail.com</a><br>
-            <a href="https://www.linkedin.com/in/coco-wei-data/">LinkedIn Profile</a> | <a href="https://github.com/c0672004-cmd/c0672004-cmd">GitHub</a> 
+    <!-- Language Switcher -->
+    <div class="fixed top-4 right-4 z-50">
+        <button onclick="switchLang('en')" class="bg-blue-600 text-white px-3 py-1 rounded-l font-bold hover:bg-blue-700">EN</button>
+        <button onclick="switchLang('fr')" class="bg-blue-600 text-white px-3 py-1 rounded-r font-bold hover:bg-blue-700 border-l border-blue-500">FR</button>
+    </div>
 
-        </div>
-        <div style="text-align: right; margin-bottom: 10px;">
-        <strong>EN</strong> | <a href="fr/index.html">FR</a>
+    <!-- Hero Section -->
+    <header class="bg-slate-900 text-white py-20 text-center px-4">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl font-bold mb-4">Your Name / Votre Nom</h1>
+            
+            <p class="lang-en text-xl text-slate-300">Junior Data Analyst based in Montreal. Specializing in Python, SQL, and Power BI.</p>
+            <p class="lang-fr text-xl text-slate-300">Analyste de données junior basé à Montréal. Spécialisé en Python, SQL, et Power BI.</p>
+            
+            <div class="mt-6 space-x-4">
+                <a href="#projects" class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded font-semibold inline-block">
+                    <span class="lang-en">View Projects</span><span class="lang-fr">Voir les projets</span>
+                </a>
+                <a href="mailto:your.email@email.com" class="border border-white hover:bg-white hover:text-slate-900 px-6 py-2 rounded font-semibold inline-block">Contact</a>
+            </div>
         </div>
     </header>
 
-    <section>
-        <h2 class="section-title">Technical Expertise</h2>
-        <div class="skills-container">
-            <span class="skill-badge">Python (Pandas, Scikit-Learn)</span>
-            <span class="skill-badge">R (Tidyverse, Shiny)</span>
-            <span class="skill-badge">SQL (MS SQL, MySQL)</span>
-            <span class="skill-badge">Statistical Modeling</span>
-            <span class="skill-badge">Tableau / Power BI</span>
-            <span class="skill-badge">Excel (VBA/Pivot)</span>
+    <!-- Projects Section -->
+    <main id="projects" class="max-w-5xl mx-auto py-16 px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+            <span class="lang-en">Featured Projects</span><span class="lang-fr">Projets vedettes</span>
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Project 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6 border border-gray-100">
+                <div class="lang-en">
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">Montreal Housing Market Analysis</h3>
+                    <p class="text-gray-600 mb-4">Scraped real estate data using Python to analyze price trends across different Montreal boroughs.</p>
+                </div>
+                <div class="lang-fr">
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">Analyse du marché immobilier à Montréal</h3>
+                    <p class="text-gray-600 mb-4">Collecte de données immobilières avec Python pour analyser les tendances de prix par arrondissement.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-slate-100 px-2 py-1 rounded text-xs font-semibold">Python</span>
+                    <span class="bg-slate-100 px-2 py-1 rounded text-xs font-semibold">Pandas</span>
+                    <span class="bg-slate-100 px-2 py-1 rounded text-xs font-semibold">Tableau</span>
+                </div>
+                <a href="#" class="text-blue-500 font-bold hover:underline text-sm">View Code →</a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="bg-white rounded-lg shadow-md p-6 border border-gray-100">
+                <div class="lang-en">
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">E-Commerce Sales Optimization</h3>
+                    <p class="text-gray-600 mb-4">Wrote advanced SQL queries to identify drop-off points in the sales funnel, increasing conversion by 12%.</p>
+                </div>
+                <div class="lang-fr">
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">Optimisation des ventes E-Commerce</h3>
+                    <p class="text-gray-600 mb-4">Requêtes SQL avancées pour identifier les points de perte dans le tunnel de vente, augmentant la conversion de 12%.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-slate-100 px-2 py-1 rounded text-xs font-semibold">SQL</span>
+                    <span class="bg-slate-100 px-2 py-1 rounded text-xs font-semibold">Power BI</span>
+                </div>
+                <a href="#" class="text-blue-500 font-bold hover:underline text-sm">View Code →</a>
+            </div>
         </div>
-    </section>
-    
-    <section>
-        <h2 class="section-title">Certification</h2>
-        <p>Data Science:  <a href="https://www.linkedin.com/learning/certificates/51da88dc774384140acb6a529ef3b131d3d0e9268eb323de75c6013c58cdac6b?trk=share_certificate">Anaconda Data Scientist Python Professional Certificate (2026) </a></p>
-        <p>Visualization: <a href="https://www.wallstreetoasis.com/certificate/734253-1422956-0">WSO Power BI Certificate, <a href="https://www.linkedin.com/in/yuanyuan-wei-932891385/details/certifications/">ThinkCloudly Power BI Bootcamp </a></p>
-        <p>Language: French Delf B1</p>
-    </section>
+    </main>
 
-    <section>
-        <h2 class="section-title">Language</h2>
-        <p>Language: English (Professional), French (Fluent), Chinese (Native), Shanghai Chinese (Native)</p>
-    </section>
-    
-    <section>
-        <h2 class="section-title">Projects</h2>
-        <h3 class="section-title">Data Projects and Works</h3>
-        <!-- Vrindavan Project Case Study Section -->
-<div class="project-container" style="max-width: 1000px; margin: 50px auto; padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ffffff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-    
-    <header style="text-align: center; margin-bottom: 40px;">
-        <h1 style="color: #1a202c; font-size: 2.5rem; margin-bottom: 10px;">Vrindavan Retail Performance Analysis</h1>
-        <p style="color: #718096; font-size: 1.1rem;">End-to-End Data Analysis | Advanced Excel & Dashboarding</p>
-    </header>
-
-    <!-- Main Dashboard Image -->
-    <div style="margin-bottom: 40px; text-align: center;">
-        <img src="retailfashionstore.png" alt="Retail Dashboard" style="width: 100%; max-width: 900px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-
-    </div>
-
-    <!-- Overview Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
-        <div style="background: #f8fafc; padding: 25px; border-radius: 10px; border-left: 5px solid #3182ce;">
-            <h3 style="color: #2d3748; margin-top: 0;">📉 The Challenge</h3>
-            <p style="color: #4a5568; line-height: 1.6;">The store operated with over 31,000 messy transactions. Sales trends were unclear, and demographic insights were missing, making inventory planning difficult.</p>
-        </div>
-        <div style="background: #f0fff4; padding: 25px; border-radius: 10px; border-left: 5px solid #38a169;">
-            <h3 style="color: #2d3748; margin-top: 0;">📊 The Solution</h3>
-            <p style="color: #4a5568; line-height: 1.6;">I built an interactive dashboard to track <strong>Average Order Value ($690)</strong>, identify <strong>March as the peak month</strong>, and discover that <strong>64% of revenue</strong> comes from female customers.</p>
-        </div>
-    </div>
-
-    <!-- Technical Process (Math/Stats Focus) -->
-    <section style="margin-bottom: 40px;">
-        <h2 style="color: #1a202c; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">Technical Deep Dive</h2>
-        <ul style="list-style-type: none; padding: 0;">
-            <li style="margin-bottom: 15px; display: flex; align-items: start;">
-                <span style="color: #3182ce; margin-right: 15px;">✔</span>
-                <span style="color: #4a5568;"><strong>Data Integrity:</strong> Used <code>SWITCH</code> and <code>VALUE</code> logic to convert string-based quantities (e.g., "One") into numeric integers for accurate summation.</span>
-            </li>
-            <li style="margin-bottom: 15px; display: flex; align-items: start;">
-                <span style="color: #3182ce; margin-right: 15px;">✔</span>
-                <span style="color: #4a5568;"><strong>Temporal Logic:</strong> Forced chronological sorting (Jan-Dec) using custom indexing to allow for meaningful time-series trend analysis.</span>
-            </li>
-            <li style="margin-bottom: 15px; display: flex; align-items: start;">
-                <span style="color: #3182ce; margin-right: 15px;">✔</span>
-                <span style="color: #4a5568;"><strong>Visualization Strategy:</strong> Implemented a dual-axis combo chart to compare Revenue (Millions) against Order Volume (Thousands) without scale distortion.</span>
-            </li>
-        </ul>
-    </section>
-
-    <!-- Call to Action -->
-    <div style="text-align: center; padding: 30px; background: #2d3748; border-radius: 12px; color: #ffffff;">
-        <h3 style="margin-top: 0;">Explore the full work</h3>
-        <p>You can find the raw data, formulas, and technical appendix on my GitHub.</p>
-        <a href="https://github.com/c0672004-cmd/Retail-Sales-Analysis-2022/tree/main" style="display: inline-block; background: #3182ce; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 10px;">View GitHub Repository</a>
-    </div>
-</div>
-
-        <h3 class="section-title">Academic Projects</h3>
-    
-        <div class="project-card">
-    <h4>🏅 Olympic Success: A Statistical Study</h4>
-    <p>A multivariate research project analyzing how national wealth (GDP) and population dynamics influence athletic performance. This study uses a combination of descriptive statistics and regression modeling to identify the key drivers of international sporting success.</p>
-    
-    <ul style="list-style-type: disc; margin-left: 20px; font-size: 0.95rem; color: #444;">
-        <li><strong>Key Findings:</strong> National GDP shows a strong positive correlation with medal counts (r = 0.769), while population size surprisingly exhibits a negative relationship in predictive models, suggesting that resource allocation is more critical than sheer size.</li>
-        <li><strong>Advanced Metrics:</strong> Developed a custom "Efficiency Index" to highlight nations like Dominica and Jamaica that over-perform relative to their economic base.</li>
-        <li><strong>Statistical Rigor:</strong> Performed ANOVA for regional comparisons and VIF checks to ensure the reliability of the regression coefficients.</li>
-    </ul>
-
-    <p style="color: #d46b08; font-family: monospace; font-size: 0.9rem;">
-        Tools: R, Tidyverse, ANOVA, VIF Analysis, ggplot2, Hypothesis Testing
-    </p>
-
-    <div style="margin-top: 20px;">
-        <a href="https://github.com/c0672004-cmd/olympic-stats-analysis" class="btn" target="_blank">View Project Repo</a>
-        <a href="https://github.com/c0672004-cmd/olympic-stats-analysis/raw/main/2_MedalsStatsReport%20-%20220251110.pdf" class="btn" target="_blank">Download Full PDF</a>
-    </div>
-</div>
-
-<div class="project-card">
-    <h4>🍷 Wine Quality Prediction: Python Analysis</h4>
-    <p>Implemented a Gradient Descent optimizer from scratch in Python to predict red wine quality. This study identifies non-linear relationships within physicochemical data by performing a comparative analysis between Multivariate Linear and Polynomial regression models.</p>
-    
-    <ul style="list-style-type: disc; margin-left: 20px; font-size: 0.95rem; color: #444;">
-        <li><strong>Key Results:</strong> Demonstrated that wine quality is intrinsically non-linear; a Degree 2 Polynomial model significantly increased predictive power (R<sup>2</sup> = 0.428) compared to the baseline linear approach.</li>
-        <li><strong>Primary Drivers:</strong> Alcohol content and Volatile Acidity were statistically identified as the most influential factors in quality perception.</li>
-    </ul>
-
-    <p style="color: #d46b08; font-family: monospace; font-size: 0.9rem;">
-    Tools: Python, NumPy, Pandas, Matplotlib, Gradient Descent, Statistical Modeling
-</p>
-
-
-    <div style="margin-top: 20px;">
-        <a href="https://github.com/c0672004-cmd/Wine-Quality-Analysis" class="btn" target="_blank">View Project Repo</a>
-        <a href="https://github.com/c0672004-cmd/Wine-Quality-Analysis/raw/main/1_MAS369-_220251110_-assignment1%20(3).pdf" class="btn" target="_blank">Download Full PDF</a>
-    </div>
-</div> <!-- Fixed: This closing tag was likely missing! -->
-
-<div class="project-card">
-    <h4>🤖 MNIST Digit Classification: Machine Learning & Deep Learning</h4>
-    <p>A comparative study of five machine learning algorithms—Logistic Regression, LDA, Decision Trees, Random Forest, and Neural Networks—to classify handwritten digits from the MNIST dataset. The project focuses on balancing computational efficiency with predictive accuracy.</p>
-    
-    <ul style="list-style-type: disc; margin-left: 20px; font-size: 0.95rem; color: #444;">
-        <li><strong>Model Optimization:</strong> Achieved a high-performance **99.17% test accuracy** by optimizing a CNN (modified LeNet-5 architecture) with Batch Normalization, ReLU activations, and Dropout layers.</li>
-        <li><strong>Advanced Techniques:</strong> Implemented Data Augmentation (rotation, zoom, shifting) and a variable learning rate scheduler to improve model robustness and convergence.</li>
-        <li><strong>Comparative Analysis:</strong> Conducted 5-fold cross-validation across all baseline models to evaluate the trade-offs between linear simplicity and non-linear complexity.</li>
-    </ul>
-
-    <p style="color: #d46b08; font-family: monospace; font-size: 0.9rem;">
-        Tools: Python, PyTorch, Scikit-learn, CNN (LeNet-5), Data Augmentation, Hyperparameter Tuning
-    </p>
-
-    <div style="margin-top: 20px;">
-        <a href="YOUR_GITHUB_LINK" class="btn" target="_blank">View Project Repo</a>
-        <a href="YOUR_PDF_LINK" class="btn" target="_blank">Download Full PDF</a>
-    </div>
-</div>
-
-    </section>
-    
-    <section>
-        <h2 class="section-title">Education</h2>
-        <p><strong>Bachelor of Science in Mathematics and Statistics</strong><br>
-        University of Sheffield </p>
-    </section>
-
-    <footer style="text-align: center; margin-top: 5rem; padding: 2rem; color: #999; font-size: 0.8rem;">
-        &copy; 2026 | Built with HTML/CSS on GitHub Pages
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
+        <p>© 2026 | Montreal, QC</p>
     </footer>
 
 </body>
